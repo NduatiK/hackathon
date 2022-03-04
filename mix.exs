@@ -5,15 +5,11 @@ defmodule Bookay.MixProject do
     [
       app: @app,
       name: "#{@app}",
-      archives: [mix_gleam: "~> 0.4.0"],
       version: "0.1.0",
       elixir: "~> 1.12",
-      elixirc_paths: elixirc_paths(Mix.env()),
-      erlc_paths: ["build/dev/erlang/#{@app}/build"],
-      erlc_include_path: "build/dev/erlang/#{@app}/include",
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
-      aliases: aliases() ++ MixGleam.add_aliases(),
+      aliases: aliases(),
       deps: deps()
     ]
   end
@@ -40,7 +36,7 @@ defmodule Bookay.MixProject do
       {:phoenix, "~> 1.6.6"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
-      {:postgrex, ">= 0.0.0"},
+      {:ecto_sqlite3, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.17.5"},
@@ -54,9 +50,7 @@ defmodule Bookay.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       #
-      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
-      {:gleam_stdlib, "~> 0.18"},
-      {:gleeunit, "~> 0.5", [only: [:dev, :test], runtime: false]}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
     ]
   end
 
