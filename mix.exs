@@ -1,6 +1,6 @@
-defmodule Bookay.MixProject do
+defmodule Hackathon.MixProject do
   use Mix.Project
-  @app :bookay
+  @app :hackathon
   def project do
     [
       app: @app,
@@ -19,7 +19,7 @@ defmodule Bookay.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Bookay.Application, []},
+      mod: {Hackathon.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

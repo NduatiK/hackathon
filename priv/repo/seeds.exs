@@ -5,7 +5,7 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     Bookay.Repo.insert!(%Bookay.SomeSchema{})
+#     Hackathon.Repo.insert!(%Hackathon.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

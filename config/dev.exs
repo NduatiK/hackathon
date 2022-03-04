@@ -1,11 +1,11 @@
 import Config
 
 # Configure your database
-# config :bookay, Bookay.Repo,
+# config :hackathon, Hackathon.Repo,
 # username: "postgres",
 # password: "postgres",
 # hostname: "localhost",
-# database: "bookay_dev",
+# database: "hackathon_dev",
 # show_sensitive_data_on_connection_error: true,
 # pool_size: 10
 
@@ -21,7 +21,7 @@ config :hackathon, Hackathon.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
-config :bookay, BookayWeb.Endpoint,
+config :hackathon, HackathonWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -59,13 +59,13 @@ config :bookay, BookayWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :bookay, BookayWeb.Endpoint,
+config :hackathon, HackathonWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/bookay_web/(live|views)/.*(ex)$",
-      ~r"lib/bookay_web/templates/.*(eex)$"
+      ~r"lib/hackathon_web/(live|views)/.*(ex)$",
+      ~r"lib/hackathon_web/templates/.*(eex)$"
     ]
   ]
 

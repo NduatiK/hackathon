@@ -1,7 +1,7 @@
-# bookay
+# hackathon
 
-[![Package Version](https://img.shields.io/hexpm/v/bookay)](https://hex.pm/packages/bookay)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/bookay/)
+[![Package Version](https://img.shields.io/hexpm/v/hackathon)](https://hex.pm/packages/hackathon)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/hackathon/)
 
 A Gleam project
 
@@ -18,7 +18,7 @@ gleam shell # Run an Erlang shell
 If available on Hex this package can be added to your Gleam project:
 
 ```sh
-gleam add bookay
+gleam add hackathon
 ```
 
-and its documentation can be found at <https://hexdocs.pm/bookay>.
+and its documentation can be found at <https://hexdocs.pm/hackathon>.

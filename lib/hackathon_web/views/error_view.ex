@@ -1,5 +1,5 @@
-defmodule BookayWeb.ErrorView do
-  use BookayWeb, :view
+defmodule HackathonWeb.ErrorView do
+  use HackathonWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

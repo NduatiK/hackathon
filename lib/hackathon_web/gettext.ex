@@ -1,11 +1,11 @@
-defmodule BookayWeb.Gettext do
+defmodule HackathonWeb.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import BookayWeb.Gettext
+      import HackathonWeb.Gettext
 
       # Simple translation
       gettext("Here is the string to translate")
@@ -20,5 +20,5 @@ defmodule BookayWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :bookay
+  use Gettext, otp_app: :hackathon
 end

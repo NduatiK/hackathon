@@ -1,3 +1,3 @@
-defmodule BookayWeb.PageViewTest do
-  use BookayWeb.ConnCase, async: true
+defmodule HackathonWeb.PageViewTest do
+  use HackathonWeb.ConnCase, async: true
 end

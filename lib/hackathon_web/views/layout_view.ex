@@ -1,5 +1,5 @@
-defmodule BookayWeb.LayoutView do
-  use BookayWeb, :view
+defmodule HackathonWeb.LayoutView do
+  use HackathonWeb, :view
 
   # Phoenix LiveDashboard is available only in development by default,
   # so we instruct Elixir to not warn if the dashboard route is missing.

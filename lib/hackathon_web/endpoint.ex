@@ -1,12 +1,12 @@
-defmodule BookayWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :bookay
+defmodule HackathonWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :hackathon
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_bookay_key",
+    key: "_hackathon_key",
     signing_salt: "g7x+9cSt"
   ]
 
@@ -18,7 +18,7 @@ defmodule BookayWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :bookay,
+    from: :hackathon,
     gzip: false,
     only: ~w(assets fonts images favicon.ico robots.txt)
 
@@ -28,7 +28,7 @@ defmodule BookayWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :bookay
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :hackathon
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
@@ -46,5 +46,5 @@ defmodule BookayWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug BookayWeb.Router
+  plug HackathonWeb.Router
 end

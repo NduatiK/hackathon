@@ -1,12 +1,12 @@
-defmodule BookayWeb do
+defmodule HackathonWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use BookayWeb, :controller
-      use BookayWeb, :view
+      use HackathonWeb, :controller
+      use HackathonWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,19 +19,19 @@ defmodule BookayWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: BookayWeb
+      use Phoenix.Controller, namespace: HackathonWeb
 
       import Plug.Conn
-      import BookayWeb.Gettext
-      alias BookayWeb.Router.Helpers, as: Routes
+      import HackathonWeb.Gettext
+      alias HackathonWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/bookay_web/templates",
-        namespace: BookayWeb
+        root: "lib/hackathon_web/templates",
+        namespace: HackathonWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -45,7 +45,7 @@ defmodule BookayWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {BookayWeb.LayoutView, "live.html"}
+        layout: {HackathonWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
     end
@@ -80,7 +80,7 @@ defmodule BookayWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import BookayWeb.Gettext
+      import HackathonWeb.Gettext
     end
   end
 
@@ -95,9 +95,9 @@ defmodule BookayWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import BookayWeb.ErrorHelpers
-      import BookayWeb.Gettext
-      alias BookayWeb.Router.Helpers, as: Routes
+      import HackathonWeb.ErrorHelpers
+      import HackathonWeb.Gettext
+      alias HackathonWeb.Router.Helpers, as: Routes
     end
   end
 

@@ -7,14 +7,14 @@
 # General application configuration
 import Config
 
-config :bookay,
-  ecto_repos: [Bookay.Repo]
+config :hackathon,
+  ecto_repos: [Hackathon.Repo]
 
 # Configures the endpoint
-config :bookay, BookayWeb.Endpoint,
+config :hackathon, HackathonWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: BookayWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Bookay.PubSub,
+  render_errors: [view: HackathonWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Hackathon.PubSub,
   live_view: [signing_salt: "zZN9+F9w"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :bookay, BookayWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :bookay, Bookay.Mailer, adapter: Swoosh.Adapters.Local
+config :hackathon, Hackathon.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

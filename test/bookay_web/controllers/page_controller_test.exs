@@ -1,5 +1,5 @@
-defmodule BookayWeb.PageControllerTest do
-  use BookayWeb.ConnCase
+defmodule HackathonWeb.PageControllerTest do
+  use HackathonWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

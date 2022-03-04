@@ -1,11 +1,11 @@
-defmodule BookayWeb.Router do
-  use BookayWeb, :router
+defmodule HackathonWeb.Router do
+  use HackathonWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {BookayWeb.LayoutView, :root}
+    plug :put_root_layout, {HackathonWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,14 +14,14 @@ defmodule BookayWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", BookayWeb do
+  scope "/", HackathonWeb do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BookayWeb do
+  # scope "/api", HackathonWeb do
   #   pipe_through :api
   # end
 
@@ -38,7 +38,7 @@ defmodule BookayWeb.Router do
     scope "/" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: BookayWeb.Telemetry
+      live_dashboard "/dashboard", metrics: HackathonWeb.Telemetry
     end
   end
 
