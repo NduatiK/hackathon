@@ -18,6 +18,13 @@ defmodule HackathonWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/communities", CommunityLive.Index, :index
+    live "/communities/new", CommunityLive.Index, :new
+    live "/communities/create", CommunityLive.Create, :create
+    live "/communities/:id/edit", CommunityLive.Index, :edit
+
+    live "/communities/:id", CommunityLive.Show, :show
+    live "/communities/:id/show/edit", CommunityLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

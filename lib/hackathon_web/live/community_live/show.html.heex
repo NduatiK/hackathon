@@ -1,0 +1,85 @@
+<div class="relative w-full h-full pb-20">
+  <div class="h-80 -z-10 absolute w-full bg-red-200">
+  </div>
+
+  <HackathonWeb.Components.community_bottom_bar/>
+
+  <div class="px-8 pt-8 pb-16">
+    <h1 class="text-black"><%= @community.name %></h1>
+    <%= if @community.location do %>
+      <h4 class="-mt-6"><%= @community.location %></h4>
+    <% end %>
+    <%= if @community.description do %>
+      <p class="pt-4 text-sm"><%= @community.description %></p>
+    <% end %>
+  </div>
+
+  <%= if @live_action in [:edit] do %>
+    <.modal return_to={Routes.community_show_path(@socket, :show, @community)}>
+      <.live_component
+        module={HackathonWeb.CommunityLive.FormComponent}
+        id={@community.id}
+        title={@page_title}
+        action={@live_action}
+        community={@community}
+        return_to={Routes.community_show_path(@socket, :show, @community)}
+      />
+    </.modal>
+  <% end %>
+
+  <div class="flex flex-col px-8 pb-12 space-y-2">
+    <h2>Live 🎉</h2>
+    <div class="h-36 w-full bg-blue-400 rounded-lg"></div>
+  </div>
+
+  <div class="flex flex-col w-full pb-12 space-y-2">
+    <h2 class="px-8">Coming Up 😄</h2>
+    <div class="flex w-full px-8 pb-1 space-x-5 overflow-x-auto">
+      <div class="flex space-x-5">
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col w-full space-y-2">
+    <h2 class="px-8">Past Events 😄</h2>
+    <div class="flex w-full px-8 pb-1 space-x-5 overflow-x-auto">
+      <div class="flex space-x-5">
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+        <div class="h-36 w-56 bg-blue-400 rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <ul>
+      <li>
+        <strong>Visibility:</strong>
+        <%= @community.visibility %>
+      </li>
+      <%# <li>
+        <strong>Coordinates:</strong>
+        <%= @community.coordinates % >
+      </li> %>
+    </ul>
+  </div>
+  <span>
+    <%= live_patch("Edit",
+      to: Routes.community_show_path(@socket, :edit, @community),
+      class: "button"
+    ) %>
+  </span>
+  | <span><%= live_redirect("Back", to: Routes.community_index_path(@socket, :index)) %></span>
+</div>

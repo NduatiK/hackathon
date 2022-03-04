@@ -7,7 +7,22 @@ module.exports = {
     '../lib/*_web/**/*.*ex'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: [
+          'Libre Baskerville',
+          'sans-serif'
+        ],
+        sans: [
+          'Inter',
+          'Rubik,-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+        ],
+        monospace: [
+          'Space Mono',
+          'monospace'
+        ]
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/forms')

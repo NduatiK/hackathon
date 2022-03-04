@@ -2,16 +2,16 @@ defmodule HackathonWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
-
+  
   This can be used in your application as:
-
+  
       use HackathonWeb, :controller
       use HackathonWeb, :view
-
+  
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
   on imports, uses and aliases.
-
+  
   Do NOT define functions inside the quoted expressions
   below. Instead, define any helper function in modules
   and import those modules here.
@@ -91,6 +91,7 @@ defmodule HackathonWeb do
 
       # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
       import Phoenix.LiveView.Helpers
+      import HackathonWeb.LiveHelpers
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View

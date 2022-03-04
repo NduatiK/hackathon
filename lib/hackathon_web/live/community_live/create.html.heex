@@ -1,0 +1,42 @@
+<div>
+  <div class="h-64 bg-gray-300"></div>
+  <div class="p-4 space-y-2">
+    <h2>Create a community</h2>
+
+    <.form
+      let={f}
+      for={@changeset}
+      id="community-form"
+      phx-change="validate"
+      class="space-y-2"
+      phx-submit="save"
+    >
+      <div class="flex flex-col">
+        <%= label(f, :name) %>
+        <%= text_input(f, :name) %>
+        <%= error_tag(f, :name) %>
+      </div>
+
+      <div class="flex flex-col">
+        <%= label(f, :description) %>
+        <%= textarea(f, :description) %>
+        <%= error_tag(f, :description) %>
+      </div>
+      <div class="flex flex-col">
+        <%= label(f, :visibility) %>
+        <%= select(f, :visibility, Ecto.Enum.values(Hackathon.Communities.Community, :visibility),
+          prompt: "Choose a value"
+        ) %>
+        <%= error_tag(f, :visibility) %>
+      </div>
+      <div class="flex flex-col">
+        <%= label(f, :location) %>
+        <%= text_input(f, :location) %>
+        <%= error_tag(f, :location) %>
+      </div>
+      <div class="flex">
+        <%= submit("Save", class: "button-purple ml-auto", phx_disable_with: "Saving...") %>
+      </div>
+    </.form>
+  </div>
+</div>

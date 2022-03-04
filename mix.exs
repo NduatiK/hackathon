@@ -50,6 +50,7 @@ defmodule Hackathon.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       #
+      {:heex_formatter, github: "feliperenan/heex_formatter"},
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
     ]
   end
