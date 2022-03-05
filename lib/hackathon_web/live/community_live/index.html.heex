@@ -17,18 +17,18 @@
   <.tr>
     <.th>Name</.th>
     <.th>Description</.th>
-    <.th>Visibility</.th>
-    <.th>Location</.th>
     <.th class="w-full"></.th>
   </.tr>
   <%= for community <- @communities do %>
-    
     <.tr>
-      <.td><%= community.name %></.td>
-      <.td><%= community.description %></.td>
-      <.td><%= community.visibility %></.td>
-      <.td><%= community.location %></.td>
-      <.td><%= community.coordinates %></.td>
+      <.td class="flex flex-col">
+        <div  class="flex flex-col">
+          <span class="font-bold"><%= community.name %></span>
+          <span class="font-base"><%= community.description %></span>
+          <span><%= community.visibility %></span>
+          <span><%= community.location %></span>
+        </div>
+      </.td>
 
       <.td>
         <span>

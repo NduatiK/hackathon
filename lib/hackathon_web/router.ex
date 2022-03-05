@@ -20,7 +20,8 @@ defmodule HackathonWeb.Router do
   scope "/", HackathonWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    # get "/", PageController, :index
+    live "/", CommunityLive.Index, :index
     live "/communities", CommunityLive.Index, :index
     live "/communities/new", CommunityLive.Index, :new
     live "/communities/create", CommunityLive.Create, :create

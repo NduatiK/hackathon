@@ -19,17 +19,22 @@
   <thead>
     <tr>
       <th>Name</th>
+
       <th>Description</th>
+
       <th>Location</th>
 
       <th></th>
     </tr>
   </thead>
+
   <tbody id="events">
     <%= for event <- @events do %>
       <tr id={"event-#{event.id}"}>
         <td><%= event.name %></td>
+
         <td><%= event.description %></td>
+
         <td><%= event.location %></td>
 
         <td>
@@ -38,11 +43,13 @@
               to: Routes.event_show_path(@socket, :show, @community_id, event)
             ) %>
           </span>
+
           <span>
             <%= live_patch("Edit",
               to: Routes.event_index_path(@socket, :edit, @community_id, event)
             ) %>
           </span>
+
           <span>
             <%= link("Delete",
               to: "#",

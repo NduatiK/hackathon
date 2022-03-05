@@ -11,7 +11,6 @@ defmodule HackathonWeb.CommunityLive.Chat do
       socket
       |> assign_defaults(session)
 
-
     {:ok, socket}
   end
 

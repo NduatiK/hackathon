@@ -35,7 +35,12 @@ defmodule Hackathon.MessagingTest do
 
     test "update_message/2 with valid data updates the message" do
       message = message_fixture()
-      update_attrs = %{emotion: "some updated emotion", sentiment: "some updated sentiment", text: "some updated text"}
+
+      update_attrs = %{
+        emotion: "some updated emotion",
+        sentiment: "some updated sentiment",
+        text: "some updated text"
+      }
 
       assert {:ok, %Message{} = message} = Messaging.update_message(message, update_attrs)
       assert message.emotion == "some updated emotion"
