@@ -1,7 +1,7 @@
 <h1>Listing Events</h1>
 
 <%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.event_index_path(@socket, :index)}>
+  <HackathonWeb.LiveHelpers.modal return_to={Routes.event_index_path(@socket, :index)}>
     <.live_component
       module={HackathonWeb.EventLive.FormComponent}
       id={@event.id || :new}
@@ -10,7 +10,7 @@
       event={@event}
       return_to={Routes.event_index_path(@socket, :index)}
     />
-  </.modal>
+  </HackathonWeb.LiveHelpers.modal>
 <% end %>
 
 <table>
@@ -31,13 +31,24 @@
         <td><%= event.location %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.event_show_path(@socket, :show, event) %></span>
-          <span><%= live_patch "Edit", to: Routes.event_index_path(@socket, :edit, event) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: event.id, data: [confirm: "Are you sure?"] %></span>
+          <span>
+            <%= live_redirect("Show", to: Routes.event_show_path(@socket, :show, event)) %>
+          </span>
+          <span>
+            <%= live_patch("Edit", to: Routes.event_index_path(@socket, :edit, event)) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: event.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New Event", to: Routes.event_index_path(@socket, :new) %></span>
+<span><%= live_patch("New Event", to: Routes.event_index_path(@socket, :new)) %></span>

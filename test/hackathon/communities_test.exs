@@ -104,7 +104,11 @@ defmodule Hackathon.CommunitiesTest do
     end
 
     test "create_event/1 with valid data creates a event" do
-      valid_attrs = %{description: "some description", location: "some location", name: "some name"}
+      valid_attrs = %{
+        description: "some description",
+        location: "some location",
+        name: "some name"
+      }
 
       assert {:ok, %Event{} = event} = Communities.create_event(valid_attrs)
       assert event.description == "some description"
@@ -118,7 +122,12 @@ defmodule Hackathon.CommunitiesTest do
 
     test "update_event/2 with valid data updates the event" do
       event = event_fixture()
-      update_attrs = %{description: "some updated description", location: "some updated location", name: "some updated name"}
+
+      update_attrs = %{
+        description: "some updated description",
+        location: "some updated location",
+        name: "some updated name"
+      }
 
       assert {:ok, %Event{} = event} = Communities.update_event(event, update_attrs)
       assert event.description == "some updated description"

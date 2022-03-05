@@ -5,7 +5,11 @@ defmodule HackathonWeb.EventLiveTest do
   import Hackathon.CommunitiesFixtures
 
   @create_attrs %{description: "some description", location: "some location", name: "some name"}
-  @update_attrs %{description: "some updated description", location: "some updated location", name: "some updated name"}
+  @update_attrs %{
+    description: "some updated description",
+    location: "some updated location",
+    name: "some updated name"
+  }
   @invalid_attrs %{description: nil, location: nil, name: nil}
 
   defp create_event(_) do

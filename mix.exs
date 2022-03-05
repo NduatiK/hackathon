@@ -10,7 +10,8 @@ defmodule Hackathon.MixProject do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      elixirc_paths: elixirc_paths(Mix.env())
     ]
   end
 
@@ -53,7 +54,8 @@ defmodule Hackathon.MixProject do
       #
       {:heex_formatter, github: "feliperenan/heex_formatter"},
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
-      {:faker, "~> 0.17", only: [:test, :dev]}
+      {:faker, "~> 0.17", only: [:test, :dev]},
+      {:petal_components, "~> 0.13"}
     ]
   end
 

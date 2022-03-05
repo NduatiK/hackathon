@@ -1,7 +1,7 @@
 <h1>Listing Communities</h1>
 
 <%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.community_index_path(@socket, :index)}>
+  <HackathonWeb.LiveHelpers.modal return_to={Routes.community_index_path(@socket, :index)}>
     <.live_component
       module={HackathonWeb.CommunityLive.FormComponent}
       id={@community.id || :new}
@@ -10,7 +10,7 @@
       community={@community}
       return_to={Routes.community_index_path(@socket, :index)}
     />
-  </.modal>
+  </HackathonWeb.LiveHelpers.modal>
 <% end %>
 
 <table>

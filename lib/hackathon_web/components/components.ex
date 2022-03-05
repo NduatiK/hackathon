@@ -7,7 +7,7 @@ defmodule HackathonWeb.Components do
   def community_bottom_bar(assigns) do
     ~H"""
     <div
-      class="shadow-lg-above fixed bottom-0 flex flex-row items-center justify-center w-full h-16 px-4 py-1 bg-white"
+      class="shadow-lg-above fixed bottom-0 flex flex-row items-center justify-center w-full h-16 px-4 py-1 text-sm bg-white"
     >
       <.bottom_bar
         selected={@current == :events}
@@ -19,7 +19,7 @@ defmodule HackathonWeb.Components do
         selected={@current == :chat}
         to={Routes.community_chat_path(HackathonWeb.Endpoint, :chat, @id)}
         icon={:chat}
-        text="Chat"
+        text="Group Chat"
       />
     </div>
     """
@@ -38,7 +38,7 @@ defmodule HackathonWeb.Components do
               else: "bg-white rounded-lg text-gray-700"
         }
       >
-        <HackathonWeb.Icons.icon icon={@icon} size={24} />
+        <HackathonWeb.Icons.icon icon={@icon} size={18} />
         <span class=""><%= @text %></span>
       </div>
     <% end %>

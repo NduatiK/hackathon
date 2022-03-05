@@ -1,0 +1,42 @@
+<div>
+  <div class="h-64 bg-gray-300"></div>
+  <div class="p-4 space-y-2">
+    <h2>Create an event</h2>
+
+    <.form
+      let={f}
+      for={@changeset}
+      id="event-form"
+      phx-change="validate"
+      class="space-y-2"
+      phx-submit="save"
+    >
+
+    <.form_field
+  type="text_input"
+  form={f}
+  field={:name}
+  placeholder=""
+/>
+
+<.form_field
+  type="textarea"
+  form={f}
+  field={:description}
+  placeholder=""
+/>
+      
+<.form_field
+  type="text_input"
+  form={f}
+  field={:location}
+  placeholder=""
+/>
+      
+      <.form_field type="datetime_local_input" form={f} field={:date} />
+      <div class="flex">
+        <%= submit("Save", class: "button-purple ml-auto", phx_disable_with: "Saving...") %>
+      </div>
+    </.form>
+  </div>
+</div>

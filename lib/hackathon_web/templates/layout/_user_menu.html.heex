@@ -1,10 +1,44 @@
-<ul>
 <%= if @current_user do %>
-  <li><%= @current_user.email %></li>
-  <li><%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %></li>
-  <li><%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %></li>
+  <div class="absolute z-10 flex justify-end w-full">
+    <.dropdown class="">
+      <:trigger_element>
+        <div
+          class="focus:outline-none inline-flex items-center justify-center w-full align-middle"
+        >
+          <.avatar
+            size="sm"
+            src="https://res.cloudinary.com/wickedsites/image/upload/v1604268092/unnamed_sagz0l.jpg"
+          />
+          <HackathonWeb.Icons.icon icon={:chevron_down} class="w-4 h-4 ml-1 -mr-1 text-gray-400 " />
+        </div>
+      </:trigger_element>
+      <.dropdown_menu_item label={@current_user.email} />
+      <.dropdown_menu_item
+        label="Settings"
+        link_type="live_patch"
+        to={Routes.user_settings_path(@conn, :edit)}
+      />
+      <.dropdown_menu_item
+        label="Log out"
+        link_type="a"
+        to={Routes.user_session_path(@conn, :delete)}
+        extra_assigns={%{method: :delete}}
+      />
+    </.dropdown>
+  </div>
 <% else %>
-  <li><%= link "Register", to: Routes.user_registration_path(@conn, :new) %></li>
-  <li><%= link "Log in", to: Routes.user_session_path(@conn, :new) %></li>
+  <ul class="flex flex-row justify-end w-full px-2 pt-4 pb-4 space-x-2">
+    <li>
+      <%= link("Register",
+        class: "button-base button-outlined-gray",
+        to: Routes.user_registration_path(@conn, :new)
+      ) %>
+    </li>
+    <li>
+      <%= link("Log in",
+        class: "button-base button-outlined-gray",
+        to: Routes.user_session_path(@conn, :new)
+      ) %>
+    </li>
+  </ul>
 <% end %>
-</ul>

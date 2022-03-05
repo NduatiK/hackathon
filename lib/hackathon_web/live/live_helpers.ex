@@ -12,7 +12,7 @@ defmodule HackathonWeb.LiveHelpers do
 
   ## Examples
 
-      <.modal return_to={Routes.community_index_path(@socket, :index)}>
+      <HackathonWeb.LiveHelpers.modal return_to={Routes.community_index_path(@socket, :index)}>
         <.live_component
           module={HackathonWeb.CommunityLive.FormComponent}
           id={@community.id || :new}
@@ -21,7 +21,7 @@ defmodule HackathonWeb.LiveHelpers do
           return_to={Routes.community_index_path(@socket, :index)}
           community: @community
         />
-      </.modal>
+      </HackathonWeb.LiveHelpers.modal>
   """
   def modal(assigns) do
     assigns = assign_new(assigns, :return_to, fn -> nil end)

@@ -29,6 +29,14 @@ defmodule HackathonWeb.Router do
     live "/communities/:id", CommunityLive.Show, :show
     live "/communities/:id/chat", CommunityLive.Chat, :chat
     live "/communities/:id/show/edit", CommunityLive.Show, :edit
+
+    live "/communities/:community_id/events", EventLive.Index, :index
+    live "/communities/:community_id/events/new", EventLive.Index, :new
+    live "/communities/:community_id/events/:id/edit", EventLive.Index, :edit
+    live "/communities/:community_id/create", EventLive.Create, :create
+
+    live "/communities/:community_id/events/:id", EventLive.Show, :show
+    live "/communities/:community_id/events/:id/show/edit", EventLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

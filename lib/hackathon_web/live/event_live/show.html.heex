@@ -1,20 +1,19 @@
 <h1>Show Event</h1>
 
 <%= if @live_action in [:edit] do %>
-  <.modal return_to={Routes.event_show_path(@socket, :show, @event)}>
+  <HackathonWeb.LiveHelpers.modal return_to={Routes.event_show_path(@socket, :show,@community_id, @event)}>
     <.live_component
       module={HackathonWeb.EventLive.FormComponent}
       id={@event.id}
       title={@page_title}
       action={@live_action}
       event={@event}
-      return_to={Routes.event_show_path(@socket, :show, @event)}
+      return_to={Routes.event_show_path(@socket, :show, @community_id, @event)}
     />
-  </.modal>
+  </HackathonWeb.LiveHelpers.modal>
 <% end %>
 
 <ul>
-
   <li>
     <strong>Name:</strong>
     <%= @event.name %>
@@ -29,8 +28,9 @@
     <strong>Location:</strong>
     <%= @event.location %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.event_show_path(@socket, :edit, @event), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.event_index_path(@socket, :index) %></span>
+<span>
+  <%= live_patch("Edit", to: Routes.event_show_path(@socket, :edit,@community_id, @event), class: "button") %>
+</span>
+| <span><%= live_redirect("Back", to: Routes.event_index_path(@socket, :index,@community_id)) %></span>
