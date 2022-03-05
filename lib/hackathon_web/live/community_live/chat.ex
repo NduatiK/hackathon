@@ -11,6 +11,7 @@ defmodule HackathonWeb.CommunityLive.Chat do
       socket
       |> assign_defaults(session)
 
+
     {:ok, socket}
   end
 
@@ -20,7 +21,10 @@ defmodule HackathonWeb.CommunityLive.Chat do
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
      |> assign(:community, Communities.get_community!(id))
-     |> assign(:messages, [
+     |> assign(
+       :messages,
+       Hackathon.Messaging.list_messages()
+       #  [
        #  %{from: "1", text: "We must " <> Faker.Company.bs()},
        #  %{from: "1", text: "We must " <> Faker.Company.bs()},
        #  %{from: "me", text: "We must " <> Faker.Company.bs()},
@@ -37,7 +41,8 @@ defmodule HackathonWeb.CommunityLive.Chat do
        #  %{from: "me", text: "We must " <> Faker.Company.bs()},
        #  %{from: "1", text: "We must " <> Faker.Company.bs()},
        #  %{from: "me", text: "We must " <> Faker.Company.bs()}
-     ])}
+       #  ]
+     )}
   end
 
   defp page_title(:chat), do: "Show Community"
@@ -51,7 +56,7 @@ defmodule HackathonWeb.CommunityLive.Chat do
       Req.post!("http://127.0.0.1:5000/emotion", {:form, [{"text", msg}]})
       |> then(fn res -> Jason.decode!(res.body)["message"]["output"] end)
 
-    {:ok,msg} =
+    {:ok, msg} =
       %{
         from: socket.assigns.current_user.id,
         text: msg,

@@ -14,7 +14,7 @@ defmodule Hackathon.Messaging.Message do
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:sentiment, :emotion, :text])
-    |> validate_required([:sentiment, :emotion, :text])
+    |> cast(attrs, [:sentiment, :emotion, :text, :from])
+    |> validate_required([:sentiment, :emotion, :text, :from])
   end
 end
