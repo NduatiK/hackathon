@@ -21,4 +21,20 @@ defmodule Hackathon.CommunitiesFixtures do
 
     community
   end
+
+  @doc """
+  Generate a event.
+  """
+  def event_fixture(attrs \\ %{}) do
+    {:ok, event} =
+      attrs
+      |> Enum.into(%{
+        description: "some description",
+        location: "some location",
+        name: "some name"
+      })
+      |> Hackathon.Communities.create_event()
+
+    event
+  end
 end
