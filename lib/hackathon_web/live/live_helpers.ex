@@ -1,6 +1,8 @@
 defmodule HackathonWeb.LiveHelpers do
   import Phoenix.LiveView
   import Phoenix.LiveView.Helpers
+  alias Hackathon.Accounts.User
+  alias Hackathon.Accounts
 
   alias Phoenix.LiveView.JS
 
@@ -56,5 +58,20 @@ defmodule HackathonWeb.LiveHelpers do
     js
     |> JS.hide(to: "#modal", transition: "fade-out")
     |> JS.hide(to: "#modal-content", transition: "fade-out-scale")
+  end
+
+  def assign_defaults(socket, session) do
+    socket =
+      socket
+      |> assign_new(:current_user, fn ->
+        find_current_user(session)
+      end)
+      |> assign_new(:current_organization, fn -> nil end)
+  end
+
+  defp find_current_user(session) do
+    with user_token when not is_nil(user_token) <- session["user_token"],
+         %User{} = user <- Accounts.get_user_by_session_token(user_token),
+         do: user
   end
 end
