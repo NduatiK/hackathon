@@ -1,5 +1,7 @@
 <div class="h-full w-full">
-  <div class="h-80 bg-blue-200  mx-2 mt-6 pt-8 rounded-t-lg"></div>
+  <div class="bg-cover h-80 bg-blue-200  mx-2 mt-6 pt-8 rounded-t-lg bg-[url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')]">
+    
+  </div>
   <div class="px-2 mt-6 w-full">
     <div class="w-full">
       <h2><%= @event.name %></h2>
@@ -11,7 +13,7 @@
       </button>
       </div>
     </div>
-    <div>
+    <div class="mt-4">
       <div>
         <div class="flex items-center space-x-2 text-base">
           <h4 class="font-semibold text-slate-900">Contributors</h4>
@@ -85,7 +87,7 @@
          <%= @event.description %>
         </p>
       </div>
-      <div>
+      <div class="mb-5">
         <h4>Meetups</h4>
         <div class="flex justify-center">
         <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
