@@ -6,6 +6,7 @@ defmodule Hackathon.Communities.Event do
     field :description, :string
     field :location, :string
     field :name, :string
+    field :date, :naive_datetime
 
     field :community, :id
     field :organizer, :id

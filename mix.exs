@@ -55,7 +55,8 @@ defmodule Hackathon.MixProject do
       {:heex_formatter, github: "feliperenan/heex_formatter"},
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:faker, "~> 0.17", only: [:test, :dev]},
-      {:petal_components, "~> 0.13"}
+      {:petal_components, "~> 0.13"},
+      {:req, "~> 0.2.0"}
     ]
   end
 

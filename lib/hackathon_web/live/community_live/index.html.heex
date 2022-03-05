@@ -13,46 +13,40 @@
   </HackathonWeb.LiveHelpers.modal>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Visibility</th>
-      <th>Location</th>
-      <th>Coordinates</th>
+<.table>
+  <.tr>
+    <.th>Name</.th>
+    <.th>Description</.th>
+    <.th>Visibility</.th>
+    <.th>Location</.th>
+    <.th class="w-full"></.th>
+  </.tr>
+  <%= for community <- @communities do %>
+    
+    <.tr>
+      <.td><%= community.name %></.td>
+      <.td><%= community.description %></.td>
+      <.td><%= community.visibility %></.td>
+      <.td><%= community.location %></.td>
+      <.td><%= community.coordinates %></.td>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="communities">
-    <%= for community <- @communities do %>
-      <tr id={"community-#{community.id}"}>
-        <td><%= community.name %></td>
-        <td><%= community.description %></td>
-        <td><%= community.visibility %></td>
-        <td><%= community.location %></td>
-        <td><%= community.coordinates %></td>
-
-        <td>
-          <span>
-            <%= live_redirect("Show", to: Routes.community_show_path(@socket, :show, community)) %>
-          </span>
-          <span>
-            <%= live_patch("Edit", to: Routes.community_index_path(@socket, :edit, community)) %>
-          </span>
-          <span>
-            <%= link("Delete",
-              to: "#",
-              phx_click: "delete",
-              phx_value_id: community.id,
-              data: [confirm: "Are you sure?"]
-            ) %>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <.td>
+        <span>
+          <%= live_redirect("Show", to: Routes.community_show_path(@socket, :show, community)) %>
+        </span>
+        <span>
+          <%= live_patch("Edit", to: Routes.community_index_path(@socket, :edit, community)) %>
+        </span>
+        <span>
+          <%= link("Delete",
+            to: "#",
+            phx_click: "delete",
+            phx_value_id: community.id,
+            data: [confirm: "Are you sure?"]
+          ) %>
+        </span>
+      </.td>
+    </.tr>
+  <% end %>
+</.table>
 <span><%= live_patch("New Community", to: Routes.community_index_path(@socket, :new)) %></span>
