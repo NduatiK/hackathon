@@ -37,8 +37,24 @@ defmodule HackathonWeb.CommunityLive.Chat do
   defp page_title(:chat), do: "Show Community"
 
   def handle_event("send_msg", %{"message" => msg}, socket) do
+    status =
+      Req.post!("http://127.0.0.1:5000/sentiment", {:form, [{"text", msg}]})
+      |> then(fn res -> Jason.decode!(res.body)["message"]["output"] end)
+
+    emotion =
+      Req.post!("http://127.0.0.1:5000/emotion", {:form, [{"text", msg}]})
+      |> then(fn res -> Jason.decode!(res.body)["message"]["output"] end)
+
     socket
-    |> assign(:messages, [%{from: "me", text: msg} | socket.assigns.messages])
+    |> assign(:messages, [
+      %{
+        from: "me",
+        text: msg,
+        sentiment: status,
+        emotion: emotion
+      }
+      | socket.assigns.messages
+    ])
     |> then(&{:noreply, &1})
   end
 end

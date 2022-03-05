@@ -2,6 +2,8 @@ defmodule HackathonWeb.UserSettingsController do
   use HackathonWeb, :controller
 
   alias Hackathon.Accounts
+  alias Hackathon.Profile
+  alias Hackathon.Profile.UserInterest
   alias HackathonWeb.UserAuth
 
   plug :assign_email_and_password_changesets
@@ -50,6 +52,21 @@ defmodule HackathonWeb.UserSettingsController do
     end
   end
 
+  def update(conn, %{"action" => "update_interest"} = params) do
+    %{"user_interest" => %{"interest_id" => interest_id}} = params
+    user = conn.assigns.current_user
+
+    case Profile.create_user_interest(%{"user_id" => user.id, "interest_id" => interest_id}) do
+      {:ok, _user} ->
+        conn
+        |> put_flash(:info, "Interest created successfully.")
+        |> redirect(to: Routes.user_settings_path(conn, :edit))
+
+      {:error, changeset} ->
+        render(conn, "edit.html", interest_changeset: changeset |> IO.inspect())
+    end
+  end
+
   def confirm_email(conn, %{"token" => token}) do
     case Accounts.update_user_email(conn.assigns.current_user, token) do
       :ok ->
@@ -70,5 +87,8 @@ defmodule HackathonWeb.UserSettingsController do
     conn
     |> assign(:email_changeset, Accounts.change_user_email(user))
     |> assign(:password_changeset, Accounts.change_user_password(user))
+    |> assign(:interest_changeset, Profile.change_user_interest(%UserInterest{user_id: user.id}))
+    |> assign(:interests, Profile.list_interests())
+    |> assign(:user_interests, Profile.list_interests_for_user(user.id))
   end
 end

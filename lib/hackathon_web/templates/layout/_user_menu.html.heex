@@ -1,10 +1,8 @@
 <%= if @current_user do %>
-  <div class="absolute z-10 flex justify-end w-full">
-    <.dropdown class="">
+  <div class="absolute z-10 flex justify-end w-full pr-2">
+    <.dropdown>
       <:trigger_element>
-        <div
-          class="focus:outline-none inline-flex items-center justify-center w-full align-middle"
-        >
+        <div class="focus:outline-none inline-flex items-center justify-center align-middle">
           <.avatar
             size="sm"
             src="https://res.cloudinary.com/wickedsites/image/upload/v1604268092/unnamed_sagz0l.jpg"

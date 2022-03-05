@@ -117,6 +117,24 @@ defmodule Hackathon.Communities do
     Repo.all(Event)
   end
 
+  def get_community_events(community_id, past: true) do
+    date = DateTime.utc_now()
+
+    Event
+    |> where([e], e.community == ^community_id)
+    |> where([e], e.date <= ^date)
+    |> Repo.all()
+  end
+
+  def get_community_events(community_id, future: true) do
+    date = DateTime.utc_now()
+
+    Event
+    |> where([e], e.community == ^community_id)
+    |> where([e], e.date >= ^date)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single event.
 
