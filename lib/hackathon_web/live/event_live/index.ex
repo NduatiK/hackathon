@@ -5,13 +5,19 @@ defmodule HackathonWeb.EventLive.Index do
   alias Hackathon.Communities.Event
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :events, list_events())}
+  def mount(%{"community_id" => community_id}, _session, socket) do
+    {:ok,
+     socket
+     |> assign(:events, list_events())
+     |> assign(:community_id, community_id)}
   end
 
   @impl true
-  def handle_params(params, _url, socket) do
-    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  def handle_params(%{"community_id" => community_id} = params, _url, socket) do
+    {:noreply,
+     socket
+     |> apply_action(socket.assigns.live_action, params)
+     |> assign(:community_id, community_id)}
   end
 
   defp apply_action(socket, :edit, %{"id" => id}) do
@@ -23,7 +29,9 @@ defmodule HackathonWeb.EventLive.Index do
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Event")
-    |> assign(:event, %Event{})
+    |> assign(:event, %Event{
+      community: socket.assigns.community_id
+    })
   end
 
   defp apply_action(socket, :index, _params) do
