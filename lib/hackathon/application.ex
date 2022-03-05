@@ -20,6 +20,8 @@ defmodule Hackathon.Application do
       # {Hackathon.Worker, arg}
     ]
 
+    Faker.start()
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Hackathon.Supervisor]

@@ -24,6 +24,7 @@ defmodule HackathonWeb.Router do
     live "/communities/:id/edit", CommunityLive.Index, :edit
 
     live "/communities/:id", CommunityLive.Show, :show
+    live "/communities/:id/chat", CommunityLive.Chat, :chat
     live "/communities/:id/show/edit", CommunityLive.Show, :edit
   end
 

@@ -51,7 +51,8 @@ defmodule Hackathon.MixProject do
       {:plug_cowboy, "~> 2.5"},
       #
       {:heex_formatter, github: "feliperenan/heex_formatter"},
-      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
+      {:faker, "~> 0.17", only: [:test, :dev]}
     ]
   end
 

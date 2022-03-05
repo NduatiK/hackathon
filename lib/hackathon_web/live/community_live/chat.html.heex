@@ -1,0 +1,60 @@
+<div class="relative w-full h-full pb-16">
+  <div class="sticky top-0 w-full bg-white shadow">
+    <div class="flex flex-row items-center">
+      <%= live_patch to: Routes.community_show_path(HackathonWeb.Endpoint, :show, @community.id), class: "p-4 flex" do %>
+        <HackathonWeb.Icons.icon icon={:arrow_left} size={24} />
+      <% end %>
+      <div class="flex flex-col">
+        <span>
+          <%= @community.name %>
+        </span>
+        <span class="text-xs">
+          <%= @community.location %>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  
+    <div class="flex flex-col-reverse w-full h-full px-5 py-3 pt-2 font-normal text-white" >
+      <%= for message <- @messages do %>
+        <%= case message.from do %>
+          <% "me" -> %>
+            <div
+              class="max-w-[90%] flex p-1 px-2 py-3 mt-2 ml-auto text-right bg-purple-500 rounded-md rounded-br-none shadow-sm"
+            >
+              <p class="whitespace-pre-wrap "><%= message.text %></p>
+            </div>
+          <% _ -> %>
+            <div  
+              class="max-w-[90%] flex p-1 px-2 py-3 mt-2 mr-4 bg-purple-400 rounded-md rounded-bl-none shadow-sm"
+            >
+              <p class="whitespace-pre-wrap "> <%= message.text %></p>
+            </div>
+        <% end %>
+      <% end %>
+    
+  </div>
+
+  <div class="shadow-lg-above fixed bottom-0 flex flex-row w-full p-2 bg-white ">
+    <form phx-submit="send_msg" autocomplete="off" class="w-full">
+      <div class="relative flex flex-row items-center w-full px-2">
+        <input
+          type="custom"
+          name="message"
+          id="global-search-input"
+          data-handle-focus
+          class="pt-1.5 focus-visible:border-0 overflow-clip w-full px-2 pb-1 my-1 bg-transparent outline-none"
+          value={""}
+          placeholder="Type something..."
+        />
+        <button
+          type="submit"
+          class="bg-gradient-to-tr from-purple-400 to-purple-500 h-11 w-11 flex flex-col items-center justify-center text-white rounded-full"
+        >
+          <HackathonWeb.Icons.icon icon={:send} class="place-self-center self-center" />
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

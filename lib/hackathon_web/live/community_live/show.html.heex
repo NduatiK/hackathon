@@ -1,8 +1,7 @@
 <div class="relative w-full h-full pb-20">
-  <div class="h-80 -z-10 absolute w-full bg-red-200">
-  </div>
+  <div class="h-80 -z-10 absolute w-full bg-red-200"></div>
 
-  <HackathonWeb.Components.community_bottom_bar/>
+  <HackathonWeb.Components.community_bottom_bar current={:events} id={@community.id} />
 
   <div class="px-8 pt-8 pb-16">
     <h1 class="text-black"><%= @community.name %></h1>
@@ -69,10 +68,6 @@
         <strong>Visibility:</strong>
         <%= @community.visibility %>
       </li>
-      <%# <li>
-        <strong>Coordinates:</strong>
-        <%= @community.coordinates % >
-      </li> %>
     </ul>
   </div>
   <span>
